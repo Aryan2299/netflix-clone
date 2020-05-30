@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Netflix</title>
+</head>
+<body>
+    <div id='header'>
+        <div id='headerLeft'>
+            <a href="#"><span style="color: red; font-size: 2em;"><b>NETFLIX</b></span></a>
+            <a href="#"><span>TVShows</span></a>
+            <a href="#"><span>Movies</span></a>
+            <a href="#"><span>Latest</span></a>
+            <a href="#"><span>My List</span></a>
+        </div>
+        <div id='headerRight'>
+            <a href="#" ><span><i class="fa fa-search"></i></span></a>
+            <a href="#"><span>Recommendations</span></a>
+            <a href="#"><span>Notifications</span></a>
+            <a href="#"><span>Users</span></a>
+        </div>
+    </div>
+
+    <div id='trending' class="jumbotron jumbotron-fluid">
+        <div id="jumbContainer" class="container">
+
+            <!-- <div class="videoContainer">
+                <video autoplay loop height="400px" width="100%" src="./video.mov"></video>
+            </div> -->
+            
+          <button class="btn btn-light" type='button'><i class="fa fa-play"></i> Play</button>
+          <button class= "btn btn-secondary" type='button'><i class="fa fa-info-circle"></i> More Info</button>
+        </div>
+      </div>
+
+      
+      <div id="displayTitles" class="jumbotron ">
+        <h1 style="color: white; top: 0; position: absolute; margin-top: 25px;"><b>Continue Watching</b></h1>
+        
+      </div>
+    <div id='scroll' ><button id="sideScroll" type="button" onclick="sideScrollRight()">&raquo</button></div>
+    
+       <script>
+
+           setTimeout(function() {
+               const videoDiv = document.createElement("div")
+               videoDiv.setAttribute("class", "videoContainer")
+               
+                const playVideo = document.createElement("video")
+                playVideo.setAttribute("autoplay", "")
+                playVideo.setAttribute("loop", "")
+                playVideo.setAttribute("height", "700px")
+                playVideo.setAttribute("width", "100%")
+                playVideo.setAttribute("src", "./SpaceForceVideo.mp4")
+
+                videoDiv.appendChild(playVideo)
+
+                document.getElementById("trending").appendChild(videoDiv)
+
+               document.getElementById("trending").style.backgroundImage = "none"
+           }, 2000)
+           
+           function titlesObject(name, description, img) {
+                this.name = name;
+                this.description = description;
+                this.img = img
+           }
+
+           const titlesList = [];
+
+           const Title1 = new titlesObject("TBBT", "TVSHOW: The Big Bang Theory Show", "./tbbt.jpeg")
+           const Title2 = new titlesObject("Space Force", "TVSHOW: Space Force", "./steve_carell.jpg")
+           const Title3 = new titlesObject("The Witcher", "TVSHOW: The Witcher", "./theWitcher.jpg")
+           const Title4 = new titlesObject("Brooklyn Nine Nine", "TVSHOW: Brooklyn Nine Nine", "./brooklynNineNine.jpeg")
+           const Title5 = new titlesObject("Annihilation", "MOVIE: Annihilation", "./annihilation.jpg")
+           const Title6 = new titlesObject("Santa Clarita Diet", "TVSHOW: Santa Clarita Diet", "./santaClaritaDiet.jpg")
+           const Title7 = new titlesObject("Stranger Things", "TVSHOW: Stranger Things", "./strangerThings.jpeg")
+           const Title8 = new titlesObject("Money Heist", "TVSHOW: Money Heist", "./moneyHeist.jpg")
+           const Title9 = new titlesObject("Dark", "TVSHOW: Dark", "./dark.jpg")
+           const Title10 = new titlesObject("Ozark", "TVSHOW: Ozark", "./ozark.jpeg")
+           const Title11 = new titlesObject("Peaky Blinders", "TVSHOW: Peaky Blinders", "./peakyBlinders.jpg")
+           const Title12 = new titlesObject("Black Mirror", "TVSHOW: Black Mirror", "./blackMirror.jpg")
+           const Title13 = new titlesObject("Narcos", "TVSHOW: Narcos", "./narcos.jpg")
+           const Title14 = new titlesObject("Mindhunter", "TVSHOW: Mindhunter", "./mindhunter.jpg")
+           const Title15 = new titlesObject("Altered Carbon", "TVSHOW: Altered Carbon", "./alteredCarbon.png")
+           const Title16 = new titlesObject("Two and a Half Men", "TVSHOW: Two and a Half Men", "./twoHalf.jpg")
+           const Title17 = new titlesObject("Penny Dreadful", "TVSHOW: Penny Dreadful", "./pennyDreadful.jpg")
+           const Title18 = new titlesObject("The King", "MOVIE: The King", "./theKing.jpg")
+           const Title19 = new titlesObject("Marriage Story", "MOVIE: Marriage Story", "./marriageStory.jpg")
+           const Title20 = new titlesObject("Apostle", "MOVIE: Apsotle", "./apostle.jpg")
+           titlesList.push(Title1,Title2,Title3,Title4,Title5,Title6,Title7,Title8,Title9,Title10,Title11,Title12,Title13,Title14,Title15,Title16,Title17,Title18,Title19,Title20)
+
+        //    function display() {
+               titlesList.map((item,index) => {
+                   const list = document.createElement("ul")
+
+                    { 
+                       const next = document.createElement("button")
+                       next.style.opacity = "0.5"
+                       next.innerHTML = "&laquo"
+
+
+                       next.setAttribute("id", "sideScrollLeft")
+                       next.addEventListener("click", function() {
+                           document.getElementById("displayTitles").scrollLeft -= 1200
+                       })
+
+                       next.style.fontSize = "60px"
+                       document.getElementById("scroll").append(next)
+                    }
+
+                   list.setAttribute("class", "container titlesContainer")
+                   list.setAttribute("id", index)
+                   const listItem = document.createElement("li")
+                   listItem.setAttribute("class", "listItem")
+
+                   list.style.backgroundImage = "url(" + item.img + ")"
+                   list.style.backgroundSize = "cover"
+
+                   list.addEventListener("mouseenter", (e) => moreInfo(e))
+
+                   list.setAttribute("class", "card")
+
+                   list.appendChild(listItem)
+
+                   document.getElementById("displayTitles").appendChild(list)               
+               })
+               console.log(titlesList)
+        //    }
+
+        
+
+        function moreInfo(e) {
+
+            
+            e.target.style.border = "5px solid white";
+
+
+
+                       const options = document.createElement("div")
+                       options.setAttribute("id", "optionsDiv")
+                       
+
+                       const right = document.createElement("div")
+                       right.setAttribute("id", "right")
+
+                       const muteBtn = document.createElement("button")
+                       muteBtn.setAttribute("class", "muteBtn")
+                       muteBtn.innerHTML = "Mute"
+
+                       const likeBtn = document.createElement("button")
+                       likeBtn.setAttribute("class", "likeBtn")
+                       likeBtn.innerHTML = "Like"
+
+                       const dislikeBtn = document.createElement("button")
+                       dislikeBtn.setAttribute("class", "dislikeBtn")
+                       dislikeBtn.innerHTML = "Dislike"
+
+                       const addToList = document.createElement("button")
+                       addToList.setAttribute("class", "addToList")
+                       addToList.innerHTML = "Add to list"
+
+
+                       right.style.display = "flex"
+                        right.style.flexDirection = "column"
+                        right.style.alignSelf = "flex-start"
+                        right.style.float = "right"
+                        right.style.marginRight = "2px"
+                        right.style.marginTop = "150px"
+
+                        muteBtn.style.opacity = "0.7"
+                        muteBtn.style.backgroundColor = "black"
+                        muteBtn.style.color = "white"
+                        muteBtn.style.marginBottom = "5px"
+
+                        likeBtn.style.opacity = "0.7"
+                        likeBtn.style.backgroundColor = "black"
+                        likeBtn.style.color = "white"
+                        likeBtn.style.marginBottom = "5px"
+
+                        dislikeBtn.style.opacity = "0.7"
+                        dislikeBtn.style.backgroundColor = "black"
+                        dislikeBtn.style.color = "white"
+                        dislikeBtn.style.marginBottom = "5px"
+
+                        addToList.style.opacity = "0.7"
+                        addToList.style.backgroundColor = "black"
+                        addToList.style.color = "white"
+                        addToList.style.marginBottom = "5px"
+
+                        right.appendChild(muteBtn)
+                        right.appendChild(likeBtn)
+                        right.appendChild(dislikeBtn)
+                        right.appendChild(addToList)
+                        options.appendChild(right)
+
+
+                        const left = document.createElement("div")
+                        right.setAttribute("id", "left")
+
+                        const playBtn = document.createElement("button")
+                        playBtn.setAttribute("class", "btn btn-light")
+                        playBtn.innerHTML = "Play"
+
+                        const itemTitle = document.createElement("p")
+                        itemTitle.innerHTML = titlesList[e.target.id].name
+
+                        const itemDesc = document.createElement("p")
+                        itemDesc.innerHTML = titlesList[e.target.id].description
+
+
+                        left.append(playBtn)
+                        left.append(itemTitle)
+                        left.append(itemDesc)
+                        options.appendChild(left)
+
+
+                        left.style.float = "left"
+                        left.style.marginLeft = "2px"
+                        left.style.display = "flex"
+                        left.style.flexDirection = "column"
+                        left.style.alignSelf = "flex-start"
+                        left.style.bottom = "0"
+                        left.style.position = "absolute"
+
+                        playBtn.style.opacity = "0.7"
+                        playBtn.style.color = "black"
+                        playBtn.style.maxWidth = "75px"
+                        playBtn.style.marginBottom = "5px"
+
+                        itemTitle.style.fontSize = "25px"
+                        itemDesc.style.marginBottom = "50px"
+                        itemDesc.style.fontSize = "12px"
+
+
+                        options.style.zIndex = 1
+
+    
+                       document.getElementById(e.target.id).appendChild(options)
+
+                       
+
+            const videoDiv = document.createElement("a")
+            videoDiv.setAttribute("href", "#")
+               videoDiv.setAttribute("class", "vid")
+               videoDiv.style.display = "flex"
+                const playVideo = document.createElement("video")
+                playVideo.style.position = "absolute"
+                playVideo.style.top = "0px"
+                playVideo.style.left = "0px"
+                playVideo.style.backgroundColor = "black"
+
+
+                playVideo.setAttribute("autoplay", "")
+                playVideo.setAttribute("loop", "")
+                playVideo.setAttribute("height", "290px")
+                playVideo.setAttribute("width", "490px")
+                playVideo.setAttribute("src", "./SpaceForceVideo.mp4")
+
+                videoDiv.appendChild(playVideo)
+
+            // e.target.style.backgroundImage = "none"
+            document.getElementById(e.target.id).appendChild(videoDiv)
+
+            e.target.addEventListener("mouseleave", function() {
+                // document.getElementById(e.target.id).removeChild(newItem)
+                document.getElementById(e.target.id).style.border = "none"
+
+                document.getElementById(e.target.id).innerHTML = " "
+            } 
+            )
+        }
+
+        function sideScrollLeft() {
+            document.getElementById("displayTitles").scrollLeft -= 1150
+        }
+        function sideScrollRight() {
+            document.getElementById("displayTitles").scrollLeft += 1150
+        }
+
+        
+       </script>
+</body>
+</html>
